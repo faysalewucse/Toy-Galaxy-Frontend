@@ -3,6 +3,7 @@ import Home from "./pages/Home/Home";
 import Main from "./components/Main";
 import WithNavbar from "./components/WithNavbar";
 import Login from "./pages/Login";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,7 +30,9 @@ function App() {
 
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </div>
   );
 }

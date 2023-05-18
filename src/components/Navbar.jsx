@@ -3,30 +3,37 @@ import logo from "../assets/star_1.png";
 import { SlClose, SlMenu } from "react-icons/sl";
 import { NavLink } from "react-router-dom";
 import PrimaryButton from "./PrimaryButton";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { currentUser } = useAuth();
 
   const navItems = [
     {
       name: "Home",
       path: "/",
+      render: true,
     },
     {
       name: "All Toys",
       path: "/alltoys",
+      render: true,
     },
     {
       name: "My Toys",
       path: "/mytoys",
+      render: currentUser ? true : false,
     },
     {
       name: "Add A Toy",
       path: "/addtoy",
+      render: currentUser ? true : false,
     },
     {
       name: "Blogs",
       path: "/blogs",
+      render: true,
     },
   ];
 
@@ -40,19 +47,23 @@ export default function Navbar() {
             open ? "top-0" : "-top-full"
           } right-0 md:w-fit w-full gap-5 transition-all duration-300 md:h-fit h-[60vh] md:gap-10 md:p-0 rounded-b-xl text-black md:text-white p-20 text-lg items-center`}
         >
-          {navItems.map((item, index) => (
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "text-secondary"
-                  : "hover:text-secondary font-normal transition-all duration-300"
-              }
-              key={index}
-              to={item.path}
-            >
-              {item.name}
-            </NavLink>
-          ))}
+          {navItems.map((item, index) => {
+            return (
+              item.render && (
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-secondary"
+                      : "hover:text-secondary font-normal transition-all duration-300"
+                  }
+                  key={index}
+                  to={item.path}
+                >
+                  {item.name}
+                </NavLink>
+              )
+            );
+          })}
           <PrimaryButton
             text={"LOGIN"}
             style={"text-lg"}

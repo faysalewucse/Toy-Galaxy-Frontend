@@ -27,7 +27,7 @@ export default function Home() {
         </div>
         <div className="md:w-1/2 text-white z-10 text-center md:text-left">
           <span className="text-4xl md:text-6xl text-white">Welcome to</span>
-          <h1 className="bg-clip-text text-transparent bg-gradient-to-l from-pink-400 to-pink-600 font-bold text-5xl md:text-8xl text-pink-400">
+          <h1 className="bg-clip-text text-transparent bg-gradient-to-l from-pink-300 to-pink-500 font-bold text-5xl md:text-8xl text-pink-400">
             ToyGalaxy
           </h1>
           <h3 className="my-5 text-xl md:text-3xl">
