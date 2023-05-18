@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="bg-primary relative">
       <Navbar />
-      <div className="max-w-screen-2xl mx-auto p-10 md:px-20 flex flex-col md:flex-row-reverse items-center">
+      <div className="max-w-screen-2xl mx-auto p-10 md:p-16 flex flex-col md:flex-row-reverse items-center">
         {/* <img
           src={circle}
           alt="circle"
@@ -31,7 +31,7 @@ export default function Home() {
             ToyGalaxy
           </h1>
           <h3 className="my-5 text-xl md:text-3xl">
-            Explore the Wonder of Play!"
+            Explore the Wonder of Play!
           </h3>
           <p className="text-pink-300 md:text-justify my-5">
             Discover a wide range of high-quality toys, games, and educational
@@ -39,7 +39,7 @@ export default function Home() {
           </p>
           <PrimaryButton
             text={"Learn More"}
-            style={"md:w-1/2 md:mx-0 mx-auto text-black"}
+            style={"md:w-1/3 py-3 md:mx-0 mx-auto text-black"}
           />
         </div>
       </div>
