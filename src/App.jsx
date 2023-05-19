@@ -5,13 +5,14 @@ import WithNavbar from "./components/WithNavbar";
 import Login from "./pages/Login";
 import { AuthProvider } from "./contexts/AuthContext";
 import Signup from "./pages/SignUp";
+import PrivateRoute from "./hooks/PrivateRoute";
+import PublicRoute from "./hooks/PublicRoute";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Main />,
-      // errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
@@ -20,18 +21,26 @@ function App() {
         {
           path: "/login",
           element: (
-            <WithNavbar>
-              <Login />
-            </WithNavbar>
+            <PublicRoute>
+              <WithNavbar>
+                <Login />
+              </WithNavbar>
+            </PublicRoute>
           ),
         },
         {
           path: "/register",
           element: (
-            <WithNavbar>
-              <Signup />
-            </WithNavbar>
+            <PublicRoute>
+              <WithNavbar>
+                <Signup />
+              </WithNavbar>
+            </PublicRoute>
           ),
+        },
+        {
+          path: "*",
+          element: <Home />,
         },
       ],
     },
