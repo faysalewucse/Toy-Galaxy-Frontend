@@ -49,7 +49,7 @@ export default function Navbar() {
             open ? "top-0" : "-top-full"
           } right-0 md:w-fit w-full gap-5 transition-all duration-300 md:h-fit ${
             currentUser ? "h-[70vh]" : "h-[60vh]"
-          } md:gap-10 md:py-10 rounded-b-xl md:text-white p-20 text-lg items-center`}
+          } md:gap-10 md:py-10 rounded-b-xl md:text-white p-20 text-lg items-center z-20`}
         >
           {navItems.map((item, index) => {
             return (
@@ -101,7 +101,7 @@ export default function Navbar() {
         </nav>
         <div onClick={() => setOpen(!open)} className="md:hidden text-2xl">
           {open ? (
-            <SlClose className="absolute right-5 top-5 text-3xl" />
+            <SlClose className="absolute right-5 top-5 text-3xl z-20" />
           ) : (
             <SlMenu className="text-teal-300 text-4xl" />
           )}

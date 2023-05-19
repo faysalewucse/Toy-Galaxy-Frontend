@@ -8,6 +8,7 @@ import Signup from "./pages/SignUp";
 import PrivateRoute from "./hooks/PrivateRoute";
 import PublicRoute from "./hooks/PublicRoute";
 import ErrorPage from "./pages/ErrorPage";
+import AddToy from "./pages/AddToy";
 
 function App() {
   const router = createBrowserRouter([
@@ -41,6 +42,16 @@ function App() {
                 <Signup />
               </WithNavbar>
             </PublicRoute>
+          ),
+        },
+        {
+          path: "/addtoy",
+          element: (
+            <PrivateRoute>
+              <WithNavbar>
+                <AddToy />
+              </WithNavbar>
+            </PrivateRoute>
           ),
         },
         {

@@ -16,13 +16,11 @@ export default function Home() {
           alt="circle"
           className="absolute w-1/3 md:w-1/6 -bottom-14 -right-14"
         /> */}
-        <div className="md:w-1/2">
-          <img
-            className="md:ml-auto md:mx-0 mx-auto mb-10 md:mb-0"
-            src={babyImage}
-            alt="baby"
-          />
-        </div>
+        <img
+          className="md:ml-auto md:w-1/2 md:mx-0 mx-auto mb-10 md:mb-0 z-10"
+          src={babyImage}
+          alt="baby"
+        />
         <div className="md:w-1/2 text-white z-10 text-center md:text-left">
           <span className="text-4xl md:text-6xl text-white">Welcome to</span>
           <h1 className="bg-clip-text text-transparent bg-gradient-to-l from-pink-300 to-pink-500 font-bold text-5xl md:text-8xl text-pink-400">
