@@ -7,6 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Signup from "./pages/SignUp";
 import PrivateRoute from "./hooks/PrivateRoute";
 import PublicRoute from "./hooks/PublicRoute";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -44,7 +45,7 @@ function App() {
         },
         {
           path: "*",
-          element: <Home />,
+          element: <ErrorPage />,
         },
       ],
     },
