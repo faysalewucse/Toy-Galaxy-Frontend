@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Pagination } from "@nextui-org/react";
+import ToysTable from "../components/ToysTable";
+import useTitle from "../hooks/useTitle";
 
 export default function AllToys() {
-  const loadedToys = useLoaderData();
-  const [toys, setToys] = useState(loadedToys);
+  useTitle("ALL TOYS");
+
+  const { result, totalToys } = useLoaderData();
+  const [toys, setToys] = useState(result);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchedCars = loadedToys.find(
+    const searchedCars = result.find(
       (toy) => toy.name.toLowerCase() === searchTerm.trim().toLowerCase()
     );
     setToys([searchedCars]);
@@ -49,41 +53,12 @@ export default function AllToys() {
         </button>
       </form>
 
-      <table className="w-full">
-        <thead>
-          <tr>
-            <th className="py-2 hidden md:block">Seller</th>
-            <th className="py-2">Toy Name</th>
-            <th className="py-2 hidden md:block">Sub-category</th>
-            <th className="py-2">Price(BDT)</th>
-            <th className="py-2">Available Quantity</th>
-            <th className="py-2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {toys.map((toy) => (
-            <tr className="text-center" key={toy._id}>
-              <td className="py-2 hidden md:block">{toy.sellerName || "-"}</td>
-              <td className="py-2 ">{toy.name}</td>
-              <td className="py-2 hidden md:block">{toy.subCategory}</td>
-              <td className="py-2 text-primary font-bold">{toy.price}</td>
-              <td className="py-2">{toy.quantity}</td>
-              <td className="py-2">
-                <button
-                  onClick={() => navigate(`/toy-details/${toy._id}`)}
-                  className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600 transition-all duration-300"
-                >
-                  View Details
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <ToysTable toys={toys} />
+
       <div className="mt-5">
         <Pagination
           onChange={(page) => handlePage(page)}
-          total={Math.ceil(toys.length / 20) + 1}
+          total={Math.ceil(totalToys / 20)}
           initialPage={1}
         />
       </div>

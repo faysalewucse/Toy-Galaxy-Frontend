@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 export default function AddToy() {
+  useTitle("ADD TOY");
+
   // current user
   const { currentUser } = useAuth();
+
+  // input fields variables initialized
   const [picture, setPicture] = useState("");
   const [name, setName] = useState("");
   const [sellerName, setSellerName] = useState(currentUser.displayName);

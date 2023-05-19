@@ -13,27 +13,27 @@ export default function Navbar() {
 
   const navItems = [
     {
-      name: "Home",
+      name: "HOME",
       path: "/",
       render: true,
     },
     {
-      name: "All Toys",
+      name: "ALL TOYS",
       path: "/alltoys",
       render: true,
     },
     {
-      name: "My Toys",
+      name: "MY TOYS",
       path: "/mytoys",
       render: currentUser ? true : false,
     },
     {
-      name: "Add A Toy",
+      name: "ADD A TOY",
       path: "/addtoy",
       render: currentUser ? true : false,
     },
     {
-      name: "Blogs",
+      name: "BLOGS",
       path: "/blogs",
       render: true,
     },
@@ -41,7 +41,7 @@ export default function Navbar() {
 
   return (
     <div className="bg-primary">
-      <div className="max-w-screen-2xl mx-auto flex text-white items-center p-5 justify-between">
+      <div className="max-w-screen-2xl mx-auto flex text-white items-center justify-between">
         <img className="w-30 h-24" src={logo} alt="Brand" />
         {/* <SearchField style={"hidden md:block"} /> */}
         <nav
@@ -77,7 +77,7 @@ export default function Navbar() {
                 alt="pro-pic"
               />
               <div className="hidden group-hover:block group-hover:absolute md:right-56 md:top-24">
-                <p className="bg-white text-primary px-4 py-1 rounded">
+                <p className="bg-secondary text-primary px-4 py-1 rounded">
                   {currentUser.displayName}
                 </p>
               </div>

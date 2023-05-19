@@ -1,8 +1,11 @@
 import babyImage from "../../assets/baby.png";
 import circle from "../../assets/circle.png";
 import PrimaryButton from "../../components/PrimaryButton";
+import useTitle from "../../hooks/useTitle";
 
 export default function Home() {
+  // set title
+  useTitle("HOME");
   return (
     <div className="bg-primary relative">
       <div className="max-w-screen-2xl mx-auto p-10 md:p-16 flex flex-col md:flex-row-reverse items-center">

@@ -3,7 +3,7 @@ import Home from "./pages/Home/Home";
 import Main from "./components/Main";
 import WithNavbar from "./components/WithNavbar";
 import Login from "./pages/Login";
-import { AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Signup from "./pages/SignUp";
 import PrivateRoute from "./hooks/PrivateRoute";
 import PublicRoute from "./hooks/PublicRoute";
@@ -11,6 +11,7 @@ import ErrorPage from "./pages/ErrorPage";
 import AddToy from "./pages/AddToy";
 import AllToys from "./pages/AllToys";
 import ToyDetails from "./pages/ToyDetails";
+import MyToys from "./pages/MyToys";
 
 function App() {
   const router = createBrowserRouter([
@@ -52,6 +53,16 @@ function App() {
             <PrivateRoute>
               <WithNavbar>
                 <AddToy />
+              </WithNavbar>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/mytoys",
+          element: (
+            <PrivateRoute>
+              <WithNavbar>
+                <MyToys />
               </WithNavbar>
             </PrivateRoute>
           ),
