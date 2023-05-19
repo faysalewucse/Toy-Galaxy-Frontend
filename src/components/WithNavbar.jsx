@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function WithNavbar({ children }) {
@@ -5,6 +6,7 @@ export default function WithNavbar({ children }) {
     <div>
       <Navbar />
       {children}
+      <Footer />
     </div>
   );
 }

@@ -16,7 +16,11 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: (
+            <WithNavbar>
+              <Home />
+            </WithNavbar>
+          ),
         },
         {
           path: "/login",

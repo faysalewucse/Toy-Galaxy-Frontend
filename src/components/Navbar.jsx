@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/star_1.png";
+import logo from "../assets/brand.png";
 import { SlClose, SlMenu } from "react-icons/sl";
 import { TbTriangleFilled } from "react-icons/tb";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -41,8 +41,8 @@ export default function Navbar() {
 
   return (
     <div className="bg-primary">
-      <div className="max-w-screen-2xl mx-auto flex text-white items-center p-5 md:p-10 justify-between">
-        <img className="w-12" src={logo} alt="Brand" />
+      <div className="max-w-screen-2xl mx-auto flex text-white items-center p-5 justify-between">
+        <img className="w-24 h-24" src={logo} alt="Brand" />
         {/* <SearchField style={"hidden md:block"} /> */}
         <nav
           className={`flex flex-col md:flex-row md:relative bg-blue-900 bg-opacity-95 md:bg-transparent absolute ${
