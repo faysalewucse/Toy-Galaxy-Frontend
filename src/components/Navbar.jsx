@@ -42,7 +42,7 @@ export default function Navbar() {
   return (
     <div className="bg-primary">
       <div className="max-w-screen-2xl mx-auto flex text-white items-center p-5 justify-between">
-        <img className="w-24 h-24" src={logo} alt="Brand" />
+        <img className="w-30 h-24" src={logo} alt="Brand" />
         {/* <SearchField style={"hidden md:block"} /> */}
         <nav
           className={`flex flex-col md:flex-row md:relative bg-blue-900 bg-opacity-95 md:bg-transparent absolute ${

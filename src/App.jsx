@@ -9,6 +9,7 @@ import PrivateRoute from "./hooks/PrivateRoute";
 import PublicRoute from "./hooks/PublicRoute";
 import ErrorPage from "./pages/ErrorPage";
 import AddToy from "./pages/AddToy";
+import AllToys from "./pages/AllToys";
 
 function App() {
   const router = createBrowserRouter([
@@ -53,6 +54,18 @@ function App() {
               </WithNavbar>
             </PrivateRoute>
           ),
+        },
+        {
+          path: "/alltoys",
+          element: (
+            <PrivateRoute>
+              <WithNavbar>
+                <AllToys />
+              </WithNavbar>
+            </PrivateRoute>
+          ),
+          loader: async () =>
+            fetch(`${import.meta.env.VITE_BASE_API_URL}/toys`),
         },
         {
           path: "*",

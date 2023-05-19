@@ -30,7 +30,7 @@ export default function AddToy() {
       description,
     };
 
-    fetch("http://localhost:5000/addtoy", {
+    fetch(`${import.meta.env.VITE_BASE_API_URL}/addtoy`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -50,10 +50,10 @@ export default function AddToy() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto  p-20">
+    <div className="max-w-7xl mx-auto p-10 md:p-20">
       <h1 className="font-bold text-4xl mb-10 text-primary">Add New Toy</h1>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="md:grid grid-cols-2 gap-5">
           <div className="mb-4">
             <label htmlFor="picture" className="block font-medium mb-1">
               Picture URL
