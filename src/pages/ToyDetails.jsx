@@ -14,9 +14,13 @@ export default function ToyDetails() {
   } = useLoaderData();
 
   return (
-    <div className="container mx-auto p-20">
-      <div className="max-w-7xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden flex items-center p-5">
-        <img src={picture} alt={name} className="w-1/2 h-96 object-cover" />
+    <div className="container mx-auto p-5 md:p-20">
+      <div className="max-w-7xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden md:flex items-center md:p-5">
+        <img
+          src={picture}
+          alt={name}
+          className="md:w-1/2 md:h-96 object-cover"
+        />
         <div className="py-4 px-6">
           <h1 className="text-2xl font-bold mb-2">{name}</h1>
           <p className="text-gray-600 mb-2">Seller: {sellerName}</p>
