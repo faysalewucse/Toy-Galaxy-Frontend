@@ -59,11 +59,9 @@ function App() {
         {
           path: "/alltoys",
           element: (
-            <PublicRoute>
-              <WithNavbar>
-                <AllToys />
-              </WithNavbar>
-            </PublicRoute>
+            <WithNavbar>
+              <AllToys />
+            </WithNavbar>
           ),
           loader: async () =>
             fetch(`${import.meta.env.VITE_BASE_API_URL}/toys`),
@@ -77,10 +75,8 @@ function App() {
               </WithNavbar>
             </PrivateRoute>
           ),
-          // loader: async ({ params }) =>
-          //   fetch(
-          //     `${import.meta.env.VITE_BASE_API_URL}/toy-details/${params.toyId}`
-          //   ),
+          loader: async ({ params }) =>
+            fetch(`${import.meta.env.VITE_BASE_API_URL}/toy/${params.toyId}`),
         },
         {
           path: "*",

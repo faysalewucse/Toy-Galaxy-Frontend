@@ -26,9 +26,14 @@ export default function AllToys() {
   };
   return (
     <div className="max-w-7xl mx-auto py-20 min-h-[50vh]">
-      <h1 className="text-3xl font-bold mb-6">All Toys</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
+        All Toys
+      </h1>
 
-      <form onSubmit={handleSearch} className="mb-6">
+      <form
+        onSubmit={handleSearch}
+        className="mb-6 md:block flex justify-center"
+      >
         <input
           type="text"
           placeholder="Search by Toy Name"
@@ -47,10 +52,10 @@ export default function AllToys() {
       <table className="w-full">
         <thead>
           <tr>
-            <th className="py-2">Seller</th>
+            <th className="py-2 hidden md:block">Seller</th>
             <th className="py-2">Toy Name</th>
-            <th className="py-2">Sub-category</th>
-            <th className="py-2">Price</th>
+            <th className="py-2 hidden md:block">Sub-category</th>
+            <th className="py-2">Price(BDT)</th>
             <th className="py-2">Available Quantity</th>
             <th className="py-2"></th>
           </tr>
@@ -58,10 +63,10 @@ export default function AllToys() {
         <tbody>
           {toys.map((toy) => (
             <tr className="text-center" key={toy._id}>
-              <td className="py-2">{toy.sellerName || "-"}</td>
-              <td className="py-2">{toy.name}</td>
-              <td className="py-2">{toy.subCategory}</td>
-              <td className="py-2">{toy.price}</td>
+              <td className="py-2 hidden md:block">{toy.sellerName || "-"}</td>
+              <td className="py-2 ">{toy.name}</td>
+              <td className="py-2 hidden md:block">{toy.subCategory}</td>
+              <td className="py-2 text-primary font-bold">{toy.price}</td>
               <td className="py-2">{toy.quantity}</td>
               <td className="py-2">
                 <button
