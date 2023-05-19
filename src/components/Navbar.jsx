@@ -49,7 +49,7 @@ export default function Navbar() {
             open ? "top-0" : "-top-full"
           } right-0 md:w-fit w-full gap-5 transition-all duration-300 md:h-fit ${
             currentUser ? "h-[70vh]" : "h-[60vh]"
-          } md:gap-10 md:p-0 rounded-b-xl md:text-white p-20 text-lg items-center`}
+          } md:gap-10 md:py-10 rounded-b-xl md:text-white p-20 text-lg items-center`}
         >
           {navItems.map((item, index) => {
             return (
@@ -76,10 +76,7 @@ export default function Navbar() {
                 src={currentUser?.photoURL}
                 alt="pro-pic"
               />
-              <div className="hidden group-hover:block group-hover:absolute md:right-40 md:top-14">
-                <span className="flex justify-end mr-2">
-                  <TbTriangleFilled />
-                </span>
+              <div className="hidden group-hover:block group-hover:absolute md:right-56 md:top-24">
                 <p className="bg-white text-primary px-4 py-1 rounded">
                   {currentUser.displayName}
                 </p>

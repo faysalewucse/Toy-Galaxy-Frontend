@@ -29,7 +29,7 @@ export default function Login() {
   };
   return (
     <div className="bg-primary">
-      <div className="max-w-7xl mx-auto p-10 md:flex gap-20 justify-between items-center min-h-[87vh]">
+      <div className="max-w-7xl mx-auto md:pt-10 md:pb-24 py-10 px-5 md:flex gap-20 justify-between items-center">
         <img className="hidden lg:block w-1/2" src={truck} alt="truck" />
         <div className="">
           <LoginForm notify={notify} forgotPassword={forgotPassword} />

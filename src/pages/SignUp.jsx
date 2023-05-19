@@ -12,7 +12,7 @@ export default function Signup() {
 
   return (
     <div className="bg-primary">
-      <div className="max-w-screen-2xl mx-auto px-2 md:px-0 md:flex justify-center items-center min-h-[87vh] md:py-0 py-10">
+      <div className="max-w-screen-2xl mx-auto md:pt-10 md:pb-24 px-5 md:px-0 md:flex justify-center items-center min-h-[87vh] md:py-0 py-10">
         <img className="hidden lg:block -ml-72 w-3/4" src={train} alt="train" />
         <div className="mt-[5%] md:mt-0">
           <SignupForm notify={notify} />

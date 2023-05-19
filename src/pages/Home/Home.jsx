@@ -18,7 +18,7 @@ export default function Home() {
         /> */}
         <div className="md:w-1/2">
           <img
-            className="md:ml-auto md:mx-0 w-2/3 mx-auto mb-10 md:mb-0"
+            className="md:ml-auto md:mx-0 mx-auto mb-10 md:mb-0"
             src={babyImage}
             alt="baby"
           />
