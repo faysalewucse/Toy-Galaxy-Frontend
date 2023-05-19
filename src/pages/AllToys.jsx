@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { Pagination } from "@nextui-org/react";
 
 export default function AllToys() {
   const loadedToys = useLoaderData();
   const [toys, setToys] = useState(loadedToys);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (event) => {
@@ -17,6 +20,14 @@ export default function AllToys() {
     setToys([searchedCars]);
   };
 
+  const handlePage = async (pageNumber) => {
+    console.log(pageNumber);
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_API_URL}/toys?pageNumber=${pageNumber}`
+    );
+    const result = await response.json();
+    setToys(result);
+  };
   return (
     <div className="max-w-7xl mx-auto py-20 min-h-[50vh]">
       <h1 className="text-3xl font-bold mb-6">All Toys</h1>
@@ -65,6 +76,13 @@ export default function AllToys() {
           ))}
         </tbody>
       </table>
+      <div className="mt-5">
+        <Pagination
+          onChange={(page) => handlePage(page)}
+          total={Math.ceil(toys.length / 20) + 1}
+          initialPage={1}
+        />
+      </div>
     </div>
   );
 }
