@@ -1,22 +1,18 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Pagination } from "@nextui-org/react";
 
 export default function AllToys() {
   const loadedToys = useLoaderData();
   const [toys, setToys] = useState(loadedToys);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    // Perform the search based on the searchTerm value
-    // Update the toy list accordingly
+  const handleSearch = (e) => {
+    e.preventDefault();
     const searchedCars = loadedToys.find(
       (toy) => toy.name.toLowerCase() === searchTerm.trim().toLowerCase()
     );
-    console.log(searchedCars);
     setToys([searchedCars]);
   };
 
@@ -68,7 +64,10 @@ export default function AllToys() {
               <td className="py-2">{toy.price}</td>
               <td className="py-2">{toy.quantity}</td>
               <td className="py-2">
-                <button className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600 transition-all duration-300">
+                <button
+                  onClick={() => navigate(`/toy-details/${toy._id}`)}
+                  className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600 transition-all duration-300"
+                >
                   View Details
                 </button>
               </td>

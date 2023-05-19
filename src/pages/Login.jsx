@@ -4,9 +4,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../contexts/AuthContext";
 import LoginForm from "../components/LoginForm";
 import truck from "../assets/truck.png";
+import { useLocation } from "react-router-dom";
 
 export default function Login() {
   const { resetPassword } = useAuth();
+
+  const { state } = useLocation();
+
   const notify = ({ message }) => {
     if (message === "Firebase: Error (auth/wrong-password).")
       message = "Wrong password";
@@ -32,7 +36,11 @@ export default function Login() {
       <div className="max-w-7xl mx-auto md:pt-10 md:pb-24 py-10 px-5 md:flex gap-20 justify-between items-center">
         <img className="hidden lg:block w-1/2" src={truck} alt="truck" />
         <div className="">
-          <LoginForm notify={notify} forgotPassword={forgotPassword} />
+          <LoginForm
+            notify={notify}
+            forgotPassword={forgotPassword}
+            state={state}
+          />
         </div>
       </div>
       {modal && (

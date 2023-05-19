@@ -10,6 +10,7 @@ import PublicRoute from "./hooks/PublicRoute";
 import ErrorPage from "./pages/ErrorPage";
 import AddToy from "./pages/AddToy";
 import AllToys from "./pages/AllToys";
+import ToyDetails from "./pages/ToyDetails";
 
 function App() {
   const router = createBrowserRouter([
@@ -58,14 +59,28 @@ function App() {
         {
           path: "/alltoys",
           element: (
-            <PrivateRoute>
+            <PublicRoute>
               <WithNavbar>
                 <AllToys />
               </WithNavbar>
-            </PrivateRoute>
+            </PublicRoute>
           ),
           loader: async () =>
             fetch(`${import.meta.env.VITE_BASE_API_URL}/toys`),
+        },
+        {
+          path: "/toy-details/:toyId",
+          element: (
+            <PrivateRoute>
+              <WithNavbar>
+                <ToyDetails />
+              </WithNavbar>
+            </PrivateRoute>
+          ),
+          // loader: async ({ params }) =>
+          //   fetch(
+          //     `${import.meta.env.VITE_BASE_API_URL}/toy-details/${params.toyId}`
+          //   ),
         },
         {
           path: "*",

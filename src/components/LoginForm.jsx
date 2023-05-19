@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import LoadingButton from "./LoadingButton";
 import { FcGoogle } from "react-icons/fc";
 
-export default function LoginForm({ notify, forgotPassword }) {
+export default function LoginForm({ notify, forgotPassword, state }) {
   //styles
   const inputStyle = "p-2 md:text-xl focus:outline-none rounded-lg";
 
@@ -23,7 +23,9 @@ export default function LoginForm({ notify, forgotPassword }) {
     try {
       setLoading(true);
       await login(email, password);
-      navigate("/");
+      const page = state?.from?.pathname || "/";
+      console.log(page);
+      navigate(page);
     } catch (err) {
       setLoading(false);
       notify(err);
