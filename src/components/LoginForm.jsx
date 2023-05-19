@@ -59,7 +59,7 @@ export default function LoginForm({ notify, forgotPassword }) {
       </h1>
       <LoadingButton loading={loading} text="Login" />
 
-      <div className="md:text-lg text-white mt-10">
+      <div className="md:text-lg text-white md:mt-10 mt-5 text-center">
         Don't have an account?{" "}
         <Link
           to="/register"
@@ -70,8 +70,13 @@ export default function LoginForm({ notify, forgotPassword }) {
         here.
       </div>
       <div className="text-center text-white">
-        <h1 className="font-bold">OR</h1>
-        <h1 className="font-semibold text-lg text-secondary">Continue with</h1>
+        <h1 className="font-bold">
+          Or {" , "}
+          <span className="font-semibold text-lg text-secondary">
+            Continue with
+          </span>
+        </h1>
+
         <div className="flex items-center justify-center gap-3 mt-3">
           <FcGoogle
             onClick={() => googleSignIn()}
