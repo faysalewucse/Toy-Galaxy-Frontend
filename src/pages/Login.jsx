@@ -2,6 +2,8 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../contexts/AuthContext";
+import LoginForm from "../components/LoginForm";
+import truck from "../assets/truck.png";
 
 export default function Login() {
   const { resetPassword } = useAuth();
@@ -26,9 +28,12 @@ export default function Login() {
     setModal(false);
   };
   return (
-    <div className="bg-orange-100">
-      <div className="max-w-7xl mx-auto p-10 md:flex gap-20 justify-center items-center min-h-screen">
-        <div className="md:mt-0 mt-[10%]"></div>
+    <div className="bg-primary">
+      <div className="max-w-7xl mx-auto p-10 md:flex gap-20 justify-between items-center min-h-[87vh]">
+        <img className="hidden lg:block w-1/2" src={truck} alt="truck" />
+        <div className="md:mt-0 mt-[10%]">
+          <LoginForm notify={notify} forgotPassword={forgotPassword} />
+        </div>
       </div>
       {modal && (
         <div className="">

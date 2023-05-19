@@ -2,13 +2,14 @@ import { useState } from "react";
 import logo from "../assets/star_1.png";
 import { SlClose, SlMenu } from "react-icons/sl";
 import { TbTriangleFilled } from "react-icons/tb";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import PrimaryButton from "./PrimaryButton";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
 
   const navItems = [
     {
@@ -112,5 +113,3 @@ export default function Navbar() {
     </div>
   );
 }
-
-// **Website logo, Website name, Home, All Toys, My Toys, Add A Toy, Blogs,** and **User profile picture**.
