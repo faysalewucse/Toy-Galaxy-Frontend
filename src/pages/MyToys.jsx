@@ -7,6 +7,7 @@ import {
   Text,
   Textarea,
   Loading,
+  Dropdown,
 } from "@nextui-org/react";
 import ToysTable from "../components/ToysTable";
 import { useAuth } from "../contexts/AuthContext";
@@ -28,6 +29,10 @@ export default function MyToys() {
   const [visible, setVisible] = useState(false);
   const [visibleDeleteConfirmationModal, setDeleteModalVisibility] =
     useState(false);
+  const openModal = () => setVisible(true);
+  const closeModal = () => setVisible(false);
+  const openDeleteConfirmModal = () => setDeleteModalVisibility(true);
+  const closeDeleteConfirmModal = () => setDeleteModalVisibility(false);
   const [loading, setLoading] = useState(true);
 
   const url = `${import.meta.env.VITE_BASE_API_URL}/mytoys/${
@@ -46,6 +51,17 @@ export default function MyToys() {
     }
   }, [visible]);
 
+  const handleSort = (sortOrder) => {
+    setLoading(true);
+    fetch(`${url}?sortOrder=${sortOrder}`)
+      .then((response) => response.json())
+      .then((responseData) => {
+        setLoading(false);
+        setToys(responseData.result);
+        setTotalToys(responseData.totalToys);
+      });
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
     const searchedCars = loadedToys.find(
@@ -53,11 +69,6 @@ export default function MyToys() {
     );
     setToys([searchedCars]);
   };
-
-  const openModal = () => setVisible(true);
-  const closeModal = () => setVisible(false);
-  const openDeleteConfirmModal = () => setDeleteModalVisibility(true);
-  const closeDeleteConfirmModal = () => setDeleteModalVisibility(false);
 
   const handlePage = async (pageNumber) => {
     const response = await fetch(
@@ -68,7 +79,7 @@ export default function MyToys() {
   };
 
   // update toy data
-  const updateToyDataHandler = (e) => {
+  const updateToyDataHandler = () => {
     setLoading(true);
     fetch(`${import.meta.env.VITE_BASE_API_URL}/toy/${toyData._id}`, {
       method: "PATCH",
@@ -124,24 +135,48 @@ export default function MyToys() {
         My Toys
       </h1>
 
-      <form
-        onSubmit={handleSearch}
-        className="mb-6 md:block flex justify-center"
-      >
-        <input
-          type="text"
-          placeholder="Search by Toy Name"
-          className="px-4 py-2 border border-gray-300 rounded-md mr-2"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600 transition-all duration-300"
-        >
-          Search
-        </button>
-      </form>
+      <div className="flex gap-5 items-center mb-6">
+        <form onSubmit={handleSearch} className="md:block flex justify-center">
+          <input
+            type="text"
+            placeholder="Search by Toy Name"
+            className="px-4 py-2 border border-gray-300 rounded-md mr-2"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600 transition-all duration-300"
+          >
+            Search
+          </button>
+        </form>
+
+        <div className="flex">
+          <label
+            htmlFor="subCategory"
+            className="bg-primary text-white py-2 px-4 rounded-l-lg"
+          >
+            Sort By
+          </label>
+          <select
+            type="text"
+            id="subCategory"
+            className="border border-gray-300 px-3 py-2 rounded-r-lg focus:outline-none"
+            onChange={(e) => handleSort(e.target.value)}
+          >
+            <option className="text-primary" value="">
+              Default
+            </option>
+            <option className="text-primary" value="-1">
+              Price (High {">"} Low)
+            </option>
+            <option className="text-primary" value="1">
+              Price (Low {">"} High)
+            </option>
+          </select>
+        </div>
+      </div>
 
       {loading ? (
         <div className="flex justify-center items-center">
