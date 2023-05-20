@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Pagination,
   Modal,
   Input,
-  Row,
-  Checkbox,
   Button,
   Text,
+  Textarea,
+  Loading,
 } from "@nextui-org/react";
 import ToysTable from "../components/ToysTable";
 import { useAuth } from "../contexts/AuthContext";
 import useTitle from "../hooks/useTitle";
+import Swal from "sweetalert2";
 
 export default function MyToys() {
   // set title
@@ -22,24 +22,29 @@ export default function MyToys() {
 
   //   initializes variables
   const [toys, setToys] = useState([]);
+  const [toyData, setToyData] = useState();
   const [totalToys, setTotalToys] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [visible, setVisible] = useState(false);
-
-  const navigate = useNavigate();
+  const [visibleDeleteConfirmationModal, setDeleteModalVisibility] =
+    useState(false);
+  const [loading, setLoading] = useState(true);
 
   const url = `${import.meta.env.VITE_BASE_API_URL}/mytoys/${
     currentUser.email
   }`;
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((responseData) => {
-        setToys(responseData.result);
-        setTotalToys(responseData.totalToys);
-      });
-  }, []);
+    if (!visible) {
+      fetch(url)
+        .then((response) => response.json())
+        .then((responseData) => {
+          setLoading(false);
+          setToys(responseData.result);
+          setTotalToys(responseData.totalToys);
+        });
+    }
+  }, [visible]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -51,14 +56,67 @@ export default function MyToys() {
 
   const openModal = () => setVisible(true);
   const closeModal = () => setVisible(false);
+  const openDeleteConfirmModal = () => setDeleteModalVisibility(true);
+  const closeDeleteConfirmModal = () => setDeleteModalVisibility(false);
 
   const handlePage = async (pageNumber) => {
-    console.log(pageNumber);
     const response = await fetch(
       `${import.meta.env.VITE_BASE_API_URL}/toys?pageNumber=${pageNumber}`
     );
     const result = await response.json();
     setToys(result);
+  };
+
+  // update toy data
+  const updateToyDataHandler = (e) => {
+    setLoading(true);
+    fetch(`${import.meta.env.VITE_BASE_API_URL}/toy/${toyData._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toyData),
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          setLoading(false);
+          Swal.fire("Great!", "Toy Data Updated Succesfully", "success");
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! " + error.message,
+        });
+      });
+    closeModal();
+  };
+
+  // update toy data
+  const deleteToy = (e) => {
+    setLoading(true);
+    fetch(`${import.meta.env.VITE_BASE_API_URL}/toy/${toyData._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toyData),
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          setLoading(false);
+          Swal.fire("Great!", "Toy Data Updated Succesfully", "success");
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! " + error.message,
+        });
+      });
+    closeModal();
   };
 
   return (
@@ -86,7 +144,19 @@ export default function MyToys() {
         </button>
       </form>
 
-      <ToysTable toys={toys} ud={true} />
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <Loading size="xl" />
+        </div>
+      ) : (
+        <ToysTable
+          toys={toys}
+          ud={true}
+          openModal={openModal}
+          setToyData={setToyData}
+          openDeleteConfirmModal={openDeleteConfirmModal}
+        />
+      )}
 
       <div className="mt-5">
         <Pagination
@@ -95,18 +165,18 @@ export default function MyToys() {
           initialPage={1}
         />
       </div>
-      {/* <Modal
+      <Modal
         closeButton
         blur
         aria-labelledby="modal-title"
         open={visible}
-        onClose={closeHandler}
+        onClose={closeModal}
       >
         <Modal.Header>
           <Text id="modal-title" size={18}>
-            Welcome to
+            Edit{" "}
             <Text b size={18}>
-              NextUI
+              Toy Info
             </Text>
           </Text>
         </Modal.Header>
@@ -117,7 +187,13 @@ export default function MyToys() {
             fullWidth
             color="primary"
             size="lg"
-            placeholder="Email"
+            initialValue={toyData?.price}
+            onChange={(e) =>
+              setToyData((toyData) => {
+                return { ...toyData, price: e.target.value };
+              })
+            }
+            placeholder="Price"
           />
           <Input
             clearable
@@ -125,24 +201,38 @@ export default function MyToys() {
             fullWidth
             color="primary"
             size="lg"
-            placeholder="Password"
+            initialValue={toyData?.quantity}
+            onChange={(e) =>
+              setToyData((toyData) => {
+                return { ...toyData, quantity: e.target.value };
+              })
+            }
+            placeholder="Available Quantity"
           />
-          <Row justify="space-between">
-            <Checkbox>
-              <Text size={14}>Remember me</Text>
-            </Checkbox>
-            <Text size={14}>Forgot password?</Text>
-          </Row>
+          <Textarea
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            initialValue={toyData?.description}
+            onChange={(e) =>
+              setToyData((toyData) => {
+                return { ...toyData, description: e.target.value };
+              })
+            }
+            placeholder="Descripotion"
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button auto flat color="error" onPress={closeModal}>
-            Close
+            Cancel
           </Button>
-          <Button auto onPress={closeModal}>
-            Sign in
+          <Button auto onPress={deleteToy}>
+            Update
           </Button>
         </Modal.Footer>
-      </Modal> */}
+      </Modal>
     </div>
   );
 }

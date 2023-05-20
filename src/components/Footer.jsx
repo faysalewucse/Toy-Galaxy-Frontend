@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GrSend } from "react-icons/gr";
 import brand from "../assets/brand.png";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Footer() {
+  const { currentUser } = useAuth();
   return (
     <footer className="bg-slate-900 text-white p-12 md:p-24">
       <div className="md:flex gap-10 max-w-7xl mx-auto">
@@ -15,9 +16,9 @@ export default function Footer() {
             alt="brand"
           />
           <p className="text-secondary2">
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour.
+            Explore our collection and find the perfect companions for endless
+            fun and memorable adventures. Shop now and unlock a world of
+            limitless possibilities!
           </p>
         </div>
         <div className="basis-1/4 mt-5 md:mt-0">
@@ -25,9 +26,25 @@ export default function Footer() {
             Usefull Link
           </h1>
           <ul className="flex flex-col gap-3">
-            <Link to="/">Home</Link>
-            <Link to="/statistics">Blog</Link>
-            <Link to="/alltoys">All Toys</Link>
+            <Link className="hover:text-secondary" to="/">
+              Home
+            </Link>
+            <Link className="hover:text-secondary" to="/blog">
+              Blog
+            </Link>
+            <Link className="hover:text-secondary" to="/alltoys">
+              All Toys
+            </Link>
+            {currentUser && (
+              <Link className="hover:text-secondary" to="/mytoys">
+                My Toys
+              </Link>
+            )}
+            {currentUser && (
+              <Link className="hover:text-secondary" to="/addtoy">
+                Add Toy
+              </Link>
+            )}
           </ul>
         </div>
         <div className="basis-1/3 mt-5 md:mt-0">

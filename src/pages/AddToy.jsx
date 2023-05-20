@@ -43,7 +43,7 @@ export default function AddToy() {
       body: JSON.stringify(toyData),
     })
       .then((response) => {
-        Swal.fire("Good job!", "You clicked the button!", "success");
+        Swal.fire("Great!", "You Added A Toy Successfully!", "success");
       })
       .catch((error) => {
         Swal.fire({
