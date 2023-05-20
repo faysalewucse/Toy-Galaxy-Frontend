@@ -23,7 +23,7 @@ export default function ShopByCategory({ sportsCar }) {
   };
 
   return (
-    <div className="bg-primary md:p-20 text-white">
+    <div className="bg-primary px-2 py-10 md:p-20 text-white">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-center text-6xl font-bold mb-20">
           Shop By Category
@@ -37,7 +37,7 @@ export default function ShopByCategory({ sportsCar }) {
           </TabList>
           {[...Array(categoryCount).keys()].map((index) => (
             <TabPanel>
-              <div className="grid grid-cols-4 gap-5 mt-5">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-5">
                 {cars.map((car) => (
                   <TabCard car={car} />
                 ))}

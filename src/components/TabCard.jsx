@@ -11,7 +11,7 @@ export default function TabCard({ car }) {
       <img
         src={picture}
         alt={name}
-        className="w-48 mx-auto h-48 object-cover rounded-md"
+        className="w-48 mx-auto h-32 object-cover rounded-md"
       />
       <div className="p-4">
         <h2 className="text-primary text-xl font-semibold mb-2">{name}</h2>
