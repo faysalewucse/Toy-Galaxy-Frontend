@@ -1,35 +1,34 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import LoadingButton from "./LoadingButton";
 import { FcGoogle } from "react-icons/fc";
 
-export default function LoginForm({ notify, forgotPassword, state }) {
+export default function LoginForm({ notify, forgotPassword }) {
   //styles
   const inputStyle = "p-2 md:text-xl focus:outline-none rounded-lg";
 
   //Initialize Variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
 
   const { login, googleSignIn } = useAuth();
-  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-      await login(email, password);
-      const page = state?.from?.pathname || "/";
-      console.log(page);
-      navigate(page);
-    } catch (err) {
-      setLoading(false);
-      notify(err);
-    }
+    setLoading(true);
+    login(email, password)
+      .then((result) => {
+        if (result.user) {
+          setLoading(false);
+        }
+      })
+      .catch((e) => {
+        setLoading(false);
+        notify(err);
+      });
   }
 
   return (
@@ -59,6 +58,7 @@ export default function LoginForm({ notify, forgotPassword, state }) {
       <h1 onClick={forgotPassword} className="text-white text-right">
         <u>Forgot Password?</u>
       </h1>
+
       <LoadingButton loading={loading} text="Login" />
 
       <div className="md:text-lg text-white md:mt-10 mt-5 text-center">

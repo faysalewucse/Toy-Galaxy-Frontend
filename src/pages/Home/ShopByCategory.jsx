@@ -36,10 +36,10 @@ export default function ShopByCategory({ sportsCar }) {
             <Tab>Regular Car</Tab>
           </TabList>
           {[...Array(categoryCount).keys()].map((index) => (
-            <TabPanel>
+            <TabPanel key={index}>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-5">
-                {cars.map((car) => (
-                  <TabCard car={car} />
+                {cars.map((car, index) => (
+                  <TabCard key={index} car={car} />
                 ))}
               </div>
             </TabPanel>

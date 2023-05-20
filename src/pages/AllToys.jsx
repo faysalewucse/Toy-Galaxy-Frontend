@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { Pagination } from "@nextui-org/react";
+import { Loading, Pagination } from "@nextui-org/react";
 import ToysTable from "../components/ToysTable";
 import useTitle from "../hooks/useTitle";
+import { useEffect } from "react";
 
 export default function AllToys() {
   useTitle("ALL TOYS");
 
   const { result, totalToys } = useLoaderData();
   const [toys, setToys] = useState(result);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => setLoading(false), []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -54,7 +58,13 @@ export default function AllToys() {
         </button>
       </form>
 
-      <ToysTable toys={toys} />
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <Loading size="xl" />
+        </div>
+      ) : (
+        <ToysTable toys={toys} />
+      )}
 
       <div className="mt-5">
         <Pagination

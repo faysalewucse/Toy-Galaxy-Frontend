@@ -19,11 +19,12 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
+const auth = getAuth();
+
 export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [currentUser, setCurrentUser] = useState();
-  const auth = getAuth();
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -36,7 +37,6 @@ export function AuthProvider({ children }) {
 
   //signup function
   async function signup(email, password, username, photoURL) {
-    const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email, password);
 
     // updateProfile
@@ -55,12 +55,12 @@ export function AuthProvider({ children }) {
 
   //login function
   function login(email, password) {
-    const auth = getAuth();
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   // signin with google
   async function googleSignIn() {
+    setLoading(true);
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider)
       .then((result) => {
@@ -74,7 +74,6 @@ export function AuthProvider({ children }) {
 
   //logout function
   function logout() {
-    const auth = getAuth();
     return signOut(auth);
   }
 
@@ -91,6 +90,8 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     error,
+    loading,
+    setLoading,
     signup,
     login,
     logout,
