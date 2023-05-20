@@ -119,7 +119,7 @@ export default function MyToys() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-20 min-h-[50vh]">
+    <div className="max-w-7xl mx-auto py-5 md:py-20 min-h-[50vh]">
       <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
         My Toys
       </h1>
@@ -228,7 +228,7 @@ export default function MyToys() {
           <Button auto flat color="error" onPress={closeModal}>
             Cancel
           </Button>
-          <Button auto onPress={deleteToy}>
+          <Button auto onPress={updateToyDataHandler}>
             Update
           </Button>
         </Modal.Footer>

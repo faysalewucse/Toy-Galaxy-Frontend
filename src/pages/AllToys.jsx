@@ -10,7 +10,6 @@ export default function AllToys() {
   const { result, totalToys } = useLoaderData();
   const [toys, setToys] = useState(result);
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -25,9 +24,11 @@ export default function AllToys() {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_API_URL}/toys?pageNumber=${pageNumber}`
     );
-    const result = await response.json();
+    const { result } = await response.json();
+
     setToys(result);
   };
+
   return (
     <div className="max-w-7xl mx-auto py-20 min-h-[50vh]">
       <h1 className="text-3xl font-bold mb-6 text-center md:text-left">

@@ -40,7 +40,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="bg-primary">
+    <div className="bg-primary p-5 md:p-0">
       <div className="max-w-screen-2xl mx-auto flex text-white items-center justify-between">
         <img className="w-30 h-24" src={logo} alt="Brand" />
         {/* <SearchField style={"hidden md:block"} /> */}

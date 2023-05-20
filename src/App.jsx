@@ -12,6 +12,7 @@ import AddToy from "./pages/AddToy";
 import AllToys from "./pages/AllToys";
 import ToyDetails from "./pages/ToyDetails";
 import MyToys from "./pages/MyToys";
+import Blogs from "./pages/Blogs";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +25,14 @@ function App() {
           element: (
             <WithNavbar>
               <Home />
+            </WithNavbar>
+          ),
+        },
+        {
+          path: "/blogs",
+          element: (
+            <WithNavbar>
+              <Blogs />
             </WithNavbar>
           ),
         },
