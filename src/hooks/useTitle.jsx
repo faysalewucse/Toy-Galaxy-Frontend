@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const useTitle = (title) => {
-  document.title = `${title} | TOY GALAXY`;
+  document.title = `TOY GALAXY | ${title}`;
 };
 
 export default useTitle;

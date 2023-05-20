@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import Gallery from "./Gallery";
 import ShopByCategory from "./ShopByCategory";
 import Gift from "./Gift";
+import Contact from "./Contact";
 
 export default function Home() {
   const sportsCar = useLoaderData();
@@ -16,6 +17,7 @@ export default function Home() {
       <Gallery />
       <ShopByCategory sportsCar={sportsCar} />
       <Gift />
+      <Contact />
     </div>
   );
 }
