@@ -115,13 +115,18 @@ export default function AddToy() {
             <label htmlFor="subCategory" className="block font-medium mb-1">
               Sub-category
             </label>
-            <input
+            <select
               type="text"
               id="subCategory"
               className="border border-gray-300 rounded px-3 py-2 w-full"
               value={subCategory}
               onChange={(e) => setSubCategory(e.target.value)}
-            />
+            >
+              <option value="Sports Car">Sports Car</option>
+              <option value="Police Car">Police Car</option>
+              <option value="Fire Truck">Fire Truck</option>
+              <option value="Regular Car">Regular Car</option>
+            </select>
           </div>
 
           <div className="mb-4">
