@@ -94,19 +94,18 @@ export default function MyToys() {
   };
 
   // update toy data
-  const deleteToy = (e) => {
+  const deleteToy = () => {
     setLoading(true);
     fetch(`${import.meta.env.VITE_BASE_API_URL}/toy/${toyData._id}`, {
-      method: "PATCH",
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(toyData),
     })
       .then((response) => {
         if (response.status === 200) {
           setLoading(false);
-          Swal.fire("Great!", "Toy Data Updated Succesfully", "success");
+          Swal.fire("Great!", "Toy Deleted Succesfully", "success");
         }
       })
       .catch((error) => {
@@ -116,7 +115,7 @@ export default function MyToys() {
           text: "Something went wrong! " + error.message,
         });
       });
-    closeModal();
+    closeDeleteConfirmModal();
   };
 
   return (
@@ -165,6 +164,7 @@ export default function MyToys() {
           initialPage={1}
         />
       </div>
+      {/* Modal for update toy data */}
       <Modal
         closeButton
         blur
@@ -230,6 +230,33 @@ export default function MyToys() {
           </Button>
           <Button auto onPress={deleteToy}>
             Update
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Modal for delete toy */}
+      <Modal
+        closeButton
+        aria-labelledby="modal-title"
+        open={visibleDeleteConfirmationModal}
+        onClose={closeDeleteConfirmModal}
+      >
+        <Modal.Header>
+          <Text id="modal-title" size={18}>
+            Are You Sure?
+            <br />
+            <Text b size={18} color="tomato">
+              You want to delete this item?
+            </Text>
+          </Text>
+        </Modal.Header>
+        <Modal.Body></Modal.Body>
+        <Modal.Footer>
+          <Button auto flat color="error" onPress={closeDeleteConfirmModal}>
+            Cancel
+          </Button>
+          <Button auto onPress={deleteToy}>
+            Sure
           </Button>
         </Modal.Footer>
       </Modal>

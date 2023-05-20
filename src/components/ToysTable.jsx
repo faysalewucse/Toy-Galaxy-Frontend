@@ -29,7 +29,7 @@ export default function ToysTable({
           <th className="py-2 hidden md:block">Sub-category</th>
           <th className="py-2">Price(BDT)</th>
           <th className="py-2">Available Quantity</th>
-          <th className="py-2"></th>
+          <th className="py-2">Action</th>
         </tr>
       </thead>
       <tbody>
