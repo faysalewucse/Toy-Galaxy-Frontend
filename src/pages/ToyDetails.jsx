@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import ScrollToTop from "../utils/ScrollToTop";
 
 export default function ToyDetails() {
   const {
@@ -13,6 +14,7 @@ export default function ToyDetails() {
     description,
   } = useLoaderData();
 
+  ScrollToTop();
   return (
     <div className="container mx-auto p-5 md:p-20">
       <div className="max-w-7xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden md:flex items-center md:p-5">

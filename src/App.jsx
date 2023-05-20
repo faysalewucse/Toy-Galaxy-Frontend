@@ -27,6 +27,8 @@ function App() {
               <Home />
             </WithNavbar>
           ),
+          loader: async () =>
+            fetch(`${import.meta.env.VITE_BASE_API_URL}/toys/Sports Car`),
         },
         {
           path: "/blogs",
