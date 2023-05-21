@@ -17,7 +17,10 @@ export default function ToyDetails() {
   ScrollToTop();
   return (
     <div className="container mx-auto p-5 md:p-20">
-      <div className="max-w-7xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden md:flex items-center md:p-5">
+      <h1 className="font-bold text-primary text-4xl text-center mb-20">
+        <u>Toy Information</u>
+      </h1>
+      <div className="max-w-7xl mx-auto bg-white shadow-blue-900 shadow-2xl rounded-lg overflow-hidden md:flex items-center md:p-5">
         <img
           src={picture}
           alt={name}

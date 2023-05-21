@@ -1,4 +1,3 @@
-import car1 from "../../assets/train.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import GalleryRow from "../../components/GalleryRow";
@@ -32,7 +31,7 @@ export default function Gallery() {
     "https://i.ibb.co/mhWt1YR/close-up-small-cars-model-road-traffic-conception.jpg";
 
   return (
-    <div className=" p-5 md:p-20 ">
+    <div className="p-5 md:p-20 bg-gallery-bg bg-cover bg-no-repeat">
       <h1 className="text-6xl text-primary font-bold mb-5 text-center">
         Gallery
       </h1>

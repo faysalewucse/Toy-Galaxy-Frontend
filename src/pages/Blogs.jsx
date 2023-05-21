@@ -45,10 +45,10 @@ export default function Blogs() {
     <div className="p-2 md:py-8 bg-gradient-to-t from-blue-800 to-primary">
       <h1 className="text-center text-5xl font-bold mb-14 text-white">Blogs</h1>
 
-      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 text-white text-justify">
+      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 text-justify">
         <div
           ref={divRef}
-          className="bg-gradient-to-t from-blue-800 to-blue-900  rounded p-6 border border-primary"
+          className="bg-gradient-to-t from-blue-800 to-blue-900  rounded p-6 border border-primary text-white"
         >
           {pinnedBlogs?.some((blog) => blog.id === "blog1") ? (
             <BsPinFill
@@ -103,7 +103,7 @@ export default function Blogs() {
 
         <div
           ref={divRef}
-          className="bg-gradient-to-t from-blue-800 to-blue-900  rounded p-6 border border-primary"
+          className="bg-gradient-to-t from-blue-800 to-blue-900  rounded p-6 border border-primary text-white"
         >
           {pinnedBlogs?.some((blog) => blog.id === "blog2") ? (
             <BsPinFill
@@ -176,7 +176,7 @@ export default function Blogs() {
 
         <div
           ref={divRef}
-          className="bg-gradient-to-t to-blue-800 from-blue-900  rounded p-6 border border-primary"
+          className="bg-gradient-to-t to-blue-800 from-blue-900  rounded p-6 border border-primary text-white"
         >
           {pinnedBlogs?.some((blog) => blog.id === "blog3") ? (
             <BsPinFill
@@ -238,7 +238,7 @@ export default function Blogs() {
 
         <div
           ref={divRef}
-          className="bg-gradient-to-t to-blue-800 from-blue-900  rounded p-6 border border-primary"
+          className="bg-gradient-to-t to-blue-800 from-blue-900  rounded p-6 border border-primary text-white"
         >
           {pinnedBlogs?.some((blog) => blog.id === "blog4") ? (
             <BsPinFill

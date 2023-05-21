@@ -11,14 +11,19 @@ import { useState } from "react";
 
 export default function Home() {
   const sportsCar = useLoaderData();
-  const [visible, setVisible] = useState(true);
   const { currentUser } = useAuth();
+  const blogs = JSON.parse(localStorage.getItem(currentUser));
+  const [visible, setVisible] = useState(true);
   // set title
   useTitle("HOME");
   return (
     <div className="relative">
-      {currentUser && visible ? (
-        <StickyNote currentUser={currentUser} setVisible={setVisible} />
+      {currentUser && visible && blogs ? (
+        <StickyNote
+          currentUser={currentUser}
+          setVisible={setVisible}
+          blogs={blogs}
+        />
       ) : null}
       <Banner />
       <Gallery />

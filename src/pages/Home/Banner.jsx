@@ -1,21 +1,46 @@
 import babyImage from "../../assets/baby.png";
-import circle from "../../assets/circle.png";
+import star1 from "../../assets/star_1.png";
+import star2 from "../../assets/star_2.png";
+import star3 from "../../assets/star_3.png";
+import star4 from "../../assets/star_4.png";
+import star5 from "../../assets/star_5.png";
+import star6 from "../../assets/star_6.png";
 import PrimaryButton from "../../components/PrimaryButton";
 
 export default function Banner() {
   return (
     <div className="bg-primary relative">
       <div className="max-w-screen-2xl mx-auto p-10 md:p-16 flex flex-col md:flex-row-reverse items-center">
-        {/* <img
-          src={circle}
-          alt="circle"
-          className="absolute w-1/3 md:w-1/6 -top-10 -left-10"
+        <img
+          className="hidden md:block absolute top-40 left-40 animate-spin w-12 h-12"
+          src={star2}
+          alt="star2"
         />
         <img
-          src={circle}
-          alt="circle"
-          className="absolute w-1/3 md:w-1/6 -bottom-14 -right-14"
-        /> */}
+          className="hidden md:block absolute bottom-40 left-80 w-12 h-12"
+          src={star3}
+          alt="star3"
+        />
+        <img
+          className="hidden md:block absolute top-10 left-1/2 w-12 h-12"
+          src={star1}
+          alt="star1"
+        />
+        <img
+          className="hidden md:block absolute bottom-40 animate-spin right-1/2 w-12 h-12"
+          src={star4}
+          alt="star4"
+        />
+        <img
+          className="hidden md:block absolute top-40 animate-spin right-10 w-12 h-12"
+          src={star5}
+          alt="star5"
+        />
+        <img
+          className="hidden md:block absolute bottom-40 right-24 w-12 h-12"
+          src={star6}
+          alt="star6"
+        />
         <img
           className="md:ml-auto md:w-1/2 md:mx-0 mx-auto mb-10 md:mb-0 z-10"
           src={babyImage}
