@@ -7,18 +7,20 @@ export default function TabCard({ car }) {
   const { _id, picture, name, price, rating } = car;
 
   return (
-    <div className="bg-white shadow-md flex flex-col justify-between rounded-md text-center">
+    <div className="border border-white shadow-md flex flex-col justify-between rounded-2xl text-center">
       <img
         src={picture}
         alt={name}
-        className="w-48 mx-auto h-32 object-cover rounded-md"
+        className="h-48 object-cover rounded-t-2xl"
       />
-      <div className="p-4">
-        <h2 className="text-primary text-xl font-semibold mb-2">{name}</h2>
-        <p className="text-gray-700 mb-2">Price: {price} BDT</p>
-        <div className="text-primary mb-2">Rating: {rating}</div>
+      <div className="p-4 text-white">
+        <h2 className="text-2xl font-semibold">{name}</h2>
+        <div className="flex items-center justify-center gap-3 font-semibold">
+          <p className="my-2">Price: {price} BDT</p>
+          <p className="my-2">Rating: {rating}</p>
+        </div>
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+          className="bg-blue-500 w-full hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl"
           onClick={() => navigate(`/toy-details/${_id}`)}
         >
           View Details

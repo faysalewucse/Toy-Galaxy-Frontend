@@ -25,9 +25,14 @@ export default function ShopByCategory({ sportsCar }) {
   return (
     <div className="bg-primary px-2 py-10 md:p-20 text-white">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-center text-6xl font-bold mb-20">
+        <h1 className="text-center text-6xl font-bold mb-5">
           Shop By Category
         </h1>
+        <p className="text-center mb-20 w-3/4 mx-auto">
+          Browse through our wide selection of products organized into various
+          categories, including electronics, home decor, fashion, toys, and much
+          more.
+        </p>
         <Tabs onSelect={(index) => handleTabPanel(index)}>
           <TabList>
             <Tab>Sports Car</Tab>

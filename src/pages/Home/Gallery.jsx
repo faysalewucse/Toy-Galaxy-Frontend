@@ -21,16 +21,15 @@ export default function Gallery() {
   };
 
   //   images
-  const image1 =
-    "https://i.ibb.co/Y3ZxM8h/black-car-with-red-yellow-stripes-red-hood.jpg";
-  const image2 =
-    "https://i.ibb.co/8b9fjcL/close-up-small-cars-model-road-traffic-conception.jpg";
+  const image1 = "https://i.ibb.co/yNZPBy4/6099832.jpg";
+  const image2 = "https://i.ibb.co/c1jvpTR/toy-red-car-with-pinecone-top.jpg";
   const image3 =
-    "https://i.ibb.co/KhxyMtB/closeup-shot-small-toy-car-wooden-train-track.jpg";
-  const image4 =
-    "https://i.ibb.co/Ky9fkBt/business-planning-concept-side-view-forklift-truck-stacking-wooden-blocks.jpg";
-  const image5 = "https://i.ibb.co/xSVnsRP/closeup-old-mini-police-car-toy.jpg";
-  const image6 = "https://i.ibb.co/s3KsGK5/red-pickup-model-black-floor.jpg";
+    "https://i.ibb.co/tqmD01B/business-planning-concept-side-view-forklift-truck-stacking-wooden-blocks.jpg";
+  const image4 = "https://i.ibb.co/CKZWKsb/closeup-old-mini-police-car-toy.jpg";
+  const image5 =
+    "https://i.ibb.co/qWW0gP1/closeup-shot-small-toy-car-wooden-train-track.jpghttps://i.ibb.co/qWW0gP1/closeup-shot-small-toy-car-wooden-train-track.jpg";
+  const image6 =
+    "https://i.ibb.co/mhWt1YR/close-up-small-cars-model-road-traffic-conception.jpg";
 
   return (
     <div className=" p-5 md:p-20 ">
@@ -67,7 +66,7 @@ export default function Gallery() {
             downloadImage={() => handleDownload(image4, "Car Image 4")}
           />
         </div>
-        <div data-aos="flip-right" data-aos-duration="2000">
+        <div data-aos="flip-left" data-aos-duration="2000">
           <GalleryRow
             src={image5}
             downloadImage={() => handleDownload(image5, "Car Image 5")}
