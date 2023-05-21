@@ -10,7 +10,7 @@ export default function Gift() {
           src={giftTruck}
           alt="gift_car"
         />
-        <div className="px-5 md:px-10 text-center md:text-left">
+        <div className="px-5 pb-5 md:pb-0 md:px-10 text-center md:text-left">
           <h1 className="font-bold text-2xl md:text-6xl text-primary">
             Unleash Kids Imagination with Exciting Wheels!
           </h1>
