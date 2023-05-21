@@ -115,7 +115,9 @@ export default function MyToys() {
     })
       .then((response) => {
         if (response.status === 200) {
+          const filteredToyData = toys.filter((toy) => toy._id !== toyData._id);
           setLoading(false);
+          setToys(filteredToyData);
           Swal.fire("Great!", "Toy Deleted Succesfully", "success");
         }
       })
@@ -281,7 +283,7 @@ export default function MyToys() {
             Are You Sure?
             <br />
             <Text b size={18} color="tomato">
-              You want to delete this item?
+              You want to delete this toy item?
             </Text>
           </Text>
         </Modal.Header>

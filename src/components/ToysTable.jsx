@@ -42,12 +42,14 @@ export default function ToysTable({
             <td className="py-2 text-primary font-bold">{toy.price}</td>
             <td className="py-2">{toy.quantity}</td>
             <td className="py-2 flex gap-2 justify-center items-center">
-              <button
-                onClick={() => navigate(`/toy-details/${toy._id}`)}
-                className="hidden md:block px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600 transition-all duration-300"
-              >
-                View Details
-              </button>
+              {!ud && (
+                <button
+                  onClick={() => navigate(`/toy-details/${toy._id}`)}
+                  className="hidden md:block px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600 transition-all duration-300"
+                >
+                  View Details
+                </button>
+              )}
               <GrView className="md:hidden text-xl" />
               {ud && (
                 <button
@@ -59,9 +61,17 @@ export default function ToysTable({
               )}
               {ud && <GrEdit className="md:hidden text-xl" />}
               {ud && (
+                <button
+                  onClick={() => deleteHandler(toy)}
+                  className="hidden md:block px-4 py-2 border border-primary bg-red-400 rounded-md hover:bg-red-500 text-white transition-all duration-300"
+                >
+                  Delete
+                </button>
+              )}
+              {ud && (
                 <MdDelete
                   onClick={() => deleteHandler(toy)}
-                  className="text-3xl md:text-4xl text-red-400 hover:scale-110 cursor-pointer transition-all duration-300 hover:text-red-500"
+                  className="md:hidden text-3xl md:text-4xl text-red-400 hover:scale-110 cursor-pointer transition-all duration-300 hover:text-red-500"
                 />
               )}
             </td>
