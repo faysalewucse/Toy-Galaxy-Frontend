@@ -101,9 +101,9 @@ export default function Navbar() {
         </nav>
         <div onClick={() => setOpen(!open)} className="md:hidden text-2xl">
           {open ? (
-            <SlClose className="absolute right-5 top-5 text-3xl z-20" />
+            <SlClose className="absolute right-6 top-9 text-3xl z-20" />
           ) : (
-            <SlMenu className="text-teal-300 text-4xl" />
+            <SlMenu className="text-teal-300 text-4xl -mt-8" />
           )}
         </div>
       </div>
