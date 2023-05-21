@@ -1,4 +1,4 @@
-import React from "react";
+import { ImFacebook2, ImWhatsapp, ImTwitter } from "react-icons/im";
 import { Link } from "react-router-dom";
 import brand from "../assets/brand.png";
 import { useAuth } from "../contexts/AuthContext";
@@ -11,15 +11,20 @@ export default function Footer() {
         <div className="basis-1/2 text-justify">
           <img
             onClick={() => navigate("/")}
-            className="w-1/3 md:w-1/3 cursor-pointer mb-3"
+            className="w-1/3 md:w-1/3 cursor-pointer"
             src={brand}
             alt="brand"
           />
-          <p className="text-secondary2">
+          <p className="text-secondary2 my-5">
             Explore our collection and find the perfect companions for endless
             fun and memorable adventures. Shop now and unlock a world of
             limitless possibilities!
           </p>
+          <div className="flex items-center text-2xl gap-3 cursor-pointer">
+            <ImFacebook2 />
+            <ImWhatsapp />
+            <ImTwitter />
+          </div>
         </div>
         <div className="basis-1/4 mt-5 md:mt-0">
           <h1 className="font-bold text-2xl font-display mb-2 md:mb-8">
@@ -79,7 +84,9 @@ export default function Footer() {
       </div>
       <hr className="border border-gray-800 my-5" />
       <div className="flex justify-between">
-        <h1 className="text-secondary">@2023 ToyGalaxy. All Rights Reserved</h1>
+        <h1 className="text-secondary">
+          &copy; 2023 ToyGalaxy. All Rights Reserved
+        </h1>
         <h1 className="text-secondary">
           Powered by <b>ToyGalaxy</b>
         </h1>
