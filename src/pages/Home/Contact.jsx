@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <div className="md:p-20 p-5 bg-primary">
       <div className="max-w-screen-2xl mx-auto shadow-lg rounded-3xl md:flex gap-10 items-center justify-between bg-white">
-        <div className="px-5 md:px-20 text-center md:text-left w-1/2">
+        <div className="p-5 md:px-20 text-center md:text-left md:w-1/2">
           <h1 className="font-bold text-2xl md:text-6xl text-primary">
             Contact Us
           </h1>
@@ -51,7 +51,7 @@ export default function Contact() {
           <PrimaryButton text={"SEND"} style={"md:w-1/3 rounded-xl"} />
         </div>
         <img
-          className="md:w-1/2 rounded-b-3xl md:rounded-r-3xl md:rounded-tl-none object-cover"
+          className="hidden md:block md:w-1/2 rounded-b-3xl md:rounded-r-3xl md:rounded-tl-none object-cover"
           src={contact}
           alt="contact"
         />
