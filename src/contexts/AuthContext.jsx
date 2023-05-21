@@ -77,14 +77,8 @@ export function AuthProvider({ children }) {
     return signOut(auth);
   }
 
-  function resetPassword(email, notify) {
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        notify("Password reset email sent successfully!");
-      })
-      .catch((error) => {
-        notify(error.message);
-      });
+  function resetPassword(email) {
+    sendPasswordResetEmail(auth, email);
   }
 
   const value = {

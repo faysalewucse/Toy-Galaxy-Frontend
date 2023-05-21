@@ -27,7 +27,7 @@ export default function LoginForm({ notify, forgotPassword }) {
       })
       .catch((e) => {
         setLoading(false);
-        notify(err);
+        notify(e);
       });
   }
 
@@ -55,7 +55,10 @@ export default function LoginForm({ notify, forgotPassword }) {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <h1 onClick={forgotPassword} className="text-white text-right">
+      <h1
+        onClick={forgotPassword}
+        className="text-white text-right cursor-pointer"
+      >
         <u>Forgot Password?</u>
       </h1>
 

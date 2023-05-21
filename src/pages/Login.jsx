@@ -25,9 +25,18 @@ export default function Login() {
 
   const sendPasswordResetEmail = (e) => {
     e.preventDefault();
-    resetPassword(email, notify);
-    setModal(false);
+    try {
+      resetPassword(email);
+
+      setModal(false);
+      toast.success(
+        "Password reset email sent to your email. Check the email."
+      );
+    } catch (error) {
+      notify(error.message);
+    }
   };
+
   return (
     <div className="bg-primary">
       <div className="max-w-7xl mx-auto md:pt-10 md:pb-24 py-10 px-5 md:flex gap-20 justify-between items-center">
@@ -58,7 +67,7 @@ export default function Login() {
                 id="displayName"
                 type="email"
                 placeholder="Enter your email address"
-                className="p-3 bg-orange-100 rounded focus:outline-none font-bold mb-2 w-full"
+                className="p-3 bg-blue-50 rounded focus:outline-none font-bold mb-2 w-full"
                 onChange={(e) => setEmail(e.target.value)}
               />
 
