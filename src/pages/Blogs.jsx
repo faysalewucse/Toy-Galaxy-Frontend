@@ -1,15 +1,70 @@
 import { BsPin, BsPinFill } from "react-icons/bs";
 import useTitle from "../hooks/useTitle";
+import { useAuth } from "../contexts/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import { useRef, useState } from "react";
 
 export default function Blogs() {
   useTitle("BLOGS");
+
+  const { currentUser } = useAuth();
+  let [pinnedBlogs, setBlogs] = useState(
+    JSON.parse(localStorage.getItem(currentUser))
+  );
+  const divRef = useRef(null);
+
+  const pinHandler = (blogId) => {
+    if (!currentUser) {
+      toast.error("You must be logged in first to pin this blog.");
+    } else {
+      if (divRef.current) {
+        const divString = divRef.current.outerHTML;
+        // check if the user is already pinned the blog
+        if (pinnedBlogs?.some((blog) => blog.id === blogId)) {
+          const filteredBlogs = pinnedBlogs.filter(
+            (blog) => blog.id !== blogId
+          );
+          localStorage.setItem(currentUser, JSON.stringify(filteredBlogs));
+          setBlogs(filteredBlogs);
+          return toast.success("Blog Unpinned.");
+        }
+
+        if (pinnedBlogs) {
+          pinnedBlogs.push({ id: blogId, div: divString });
+        } else {
+          pinnedBlogs = [{ id: blogId, div: divString }];
+        }
+        localStorage.setItem(currentUser, JSON.stringify(pinnedBlogs));
+        toast.success("Blog Pinned to Homepage.");
+        setBlogs(JSON.parse(localStorage.getItem(currentUser)));
+      }
+    }
+  };
+
   return (
     <div className="p-2 md:py-8 bg-gradient-to-t from-blue-800 to-primary">
       <h1 className="text-center text-5xl font-bold mb-14 text-white">Blogs</h1>
 
       <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 text-white text-justify">
-        <div className="bg-gradient-to-t from-blue-800 to-blue-900  rounded p-6 border border-primary">
-          <BsPin className="text-3xl mb-5 float-right" />
+        <div
+          ref={divRef}
+          className="bg-gradient-to-t from-blue-800 to-blue-900  rounded p-6 border border-primary"
+        >
+          {pinnedBlogs?.some((blog) => blog.id === "blog1") ? (
+            <BsPinFill
+              onClick={() => pinHandler("blog1")}
+              className={`text-3xl mb-5 float-right ${
+                !currentUser ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            />
+          ) : (
+            <BsPin
+              onClick={() => pinHandler("blog1")}
+              className={`text-3xl mb-5 float-right ${
+                !currentUser ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            />
+          )}
           <h2 className="text-xl font-semibold mb-4">
             What is an access token and refresh token? How do they work and
             where should we store them on the client-side?
@@ -46,8 +101,25 @@ export default function Blogs() {
           </p>
         </div>
 
-        <div className="bg-gradient-to-t from-blue-800 to-blue-900  rounded p-6 border border-primary">
-          <BsPin className="text-3xl mb-5 float-right" />
+        <div
+          ref={divRef}
+          className="bg-gradient-to-t from-blue-800 to-blue-900  rounded p-6 border border-primary"
+        >
+          {pinnedBlogs?.some((blog) => blog.id === "blog2") ? (
+            <BsPinFill
+              onClick={() => pinHandler("blog2")}
+              className={`text-3xl mb-5 float-right ${
+                !currentUser ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            />
+          ) : (
+            <BsPin
+              onClick={() => pinHandler("blog2")}
+              className={`text-3xl mb-5 float-right ${
+                !currentUser ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            />
+          )}
           <h2 className="text-xl font-semibold mb-4">
             Compare SQL and NoSQL databases?
           </h2>
@@ -102,8 +174,25 @@ export default function Blogs() {
           </p>
         </div>
 
-        <div className="bg-gradient-to-t to-blue-800 from-blue-900  rounded p-6 border border-primary">
-          <BsPin className="text-3xl mb-5 float-right" />
+        <div
+          ref={divRef}
+          className="bg-gradient-to-t to-blue-800 from-blue-900  rounded p-6 border border-primary"
+        >
+          {pinnedBlogs?.some((blog) => blog.id === "blog3") ? (
+            <BsPinFill
+              onClick={() => pinHandler("blog3")}
+              className={`text-3xl mb-5 float-right ${
+                !currentUser ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            />
+          ) : (
+            <BsPin
+              onClick={() => pinHandler("blog3")}
+              className={`text-3xl mb-5 float-right ${
+                !currentUser ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            />
+          )}
           <h2 className="text-xl font-semibold mb-4">
             What is express js? What is Nest JS?
           </h2>
@@ -147,8 +236,25 @@ export default function Blogs() {
           </p>
         </div>
 
-        <div className="bg-gradient-to-t to-blue-800 from-blue-900  rounded p-6 border border-primary">
-          <BsPin className="text-3xl mb-5 float-right" />
+        <div
+          ref={divRef}
+          className="bg-gradient-to-t to-blue-800 from-blue-900  rounded p-6 border border-primary"
+        >
+          {pinnedBlogs?.some((blog) => blog.id === "blog4") ? (
+            <BsPinFill
+              onClick={() => pinHandler("blog4")}
+              className={`text-3xl mb-5 float-right ${
+                !currentUser ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            />
+          ) : (
+            <BsPin
+              onClick={() => pinHandler("blog4")}
+              className={`text-3xl mb-5 float-right ${
+                !currentUser ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
+            />
+          )}
           <h2 className="text-xl font-semibold mb-4">
             What is MongoDB aggregate and how does it work?
           </h2>
@@ -185,6 +291,7 @@ export default function Blogs() {
           </p>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

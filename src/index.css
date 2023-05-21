@@ -5,3 +5,17 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+
+.scroll-pin {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.scroll-pin::-webkit-scrollbar {
+  width: 6px; /* Set the width of the scrollbar (optional) */
+}
+
+.scroll-pin::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Set the color of the scrollbar thumb (optional) */
+}
