@@ -29,9 +29,9 @@ export default function AddToy() {
       sellerName,
       sellerEmail,
       subCategory,
-      price,
-      rating,
-      quantity,
+      price: parseInt(price),
+      rating: parseFloat(rating),
+      quantity: parseInt(quantity),
       description,
     };
 
