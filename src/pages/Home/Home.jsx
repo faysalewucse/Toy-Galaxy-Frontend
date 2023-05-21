@@ -15,11 +15,10 @@ export default function Home() {
   const blogs = JSON.parse(localStorage.getItem(currentUser));
   const [visible, setVisible] = useState(true);
   // set title
-  console.log(blogs);
   useTitle("HOME");
   return (
     <div className="relative">
-      {currentUser && visible && blogs.length > 0 ? (
+      {currentUser && visible && blogs?.length > 0 ? (
         <StickyNote
           currentUser={currentUser}
           setVisible={setVisible}
