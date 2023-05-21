@@ -6,12 +6,12 @@ import { useAuth } from "../contexts/AuthContext";
 export default function Footer() {
   const { currentUser } = useAuth();
   return (
-    <footer className="bg-slate-900 text-white p-12 md:p-24">
+    <footer className="bg-slate-900 text-white p-5 md:p-24 md:text-left text-center">
       <div className="md:flex gap-10 max-w-7xl mx-auto">
-        <div className="basis-1/2 text-justify">
+        <div className="basis-1/2 md:text-justify text-center">
           <img
             onClick={() => navigate("/")}
-            className="w-1/3 md:w-1/3 cursor-pointer"
+            className="w-1/3 mx-auto md:mx-0 md:w-1/3 cursor-pointer"
             src={brand}
             alt="brand"
           />
@@ -20,7 +20,7 @@ export default function Footer() {
             fun and memorable adventures. Shop now and unlock a world of
             limitless possibilities!
           </p>
-          <div className="flex items-center text-2xl gap-3 cursor-pointer">
+          <div className="flex items-center justify-center md:justify-start text-2xl gap-3 cursor-pointer">
             <ImFacebook2 />
             <ImWhatsapp />
             <ImTwitter />
