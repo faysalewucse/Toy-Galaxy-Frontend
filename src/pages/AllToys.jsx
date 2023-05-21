@@ -13,14 +13,26 @@ export default function AllToys() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => setLoading(false), []);
+  useEffect(() => {
+    if (searchTerm === "") {
+      setToys(result);
+    }
+    setLoading(false);
+  }, [searchTerm]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchedCars = result.find(
-      (toy) => toy.name.toLowerCase() === searchTerm.trim().toLowerCase()
+    const searchedCars = result.find((toy) =>
+      toy.name.toLowerCase().includes(searchTerm.trim().toLowerCase())
     );
-    setToys([searchedCars]);
+    if (searchedCars) setToys([searchedCars]);
+    else {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No toy found with this name.",
+      });
+    }
   };
 
   const handlePage = async (pageNumber) => {
