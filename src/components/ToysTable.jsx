@@ -50,7 +50,10 @@ export default function ToysTable({
                   View Details
                 </button>
               )}
-              <GrView className="md:hidden text-xl" />
+              <GrView
+                onClick={() => navigate(`/toy-details/${toy._id}`)}
+                className="md:hidden text-xl"
+              />
               {ud && (
                 <button
                   onClick={() => updateHandler(toy)}
@@ -59,7 +62,12 @@ export default function ToysTable({
                   Update
                 </button>
               )}
-              {ud && <GrEdit className="md:hidden text-xl" />}
+              {ud && (
+                <GrEdit
+                  onClick={() => updateHandler(toy)}
+                  className="md:hidden text-xl"
+                />
+              )}
               {ud && (
                 <button
                   onClick={() => deleteHandler(toy)}

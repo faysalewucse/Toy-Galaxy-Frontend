@@ -88,7 +88,7 @@ export default function Navbar() {
             <PrimaryButton
               onClickHandler={() => navigate("/login")}
               text={"Login"}
-              style={"ml-10"}
+              style={"md:ml-10"}
             />
           ) : (
             <span

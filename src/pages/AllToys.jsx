@@ -46,7 +46,7 @@ export default function AllToys() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-20 min-h-[50vh]">
+    <div className="max-w-7xl mx-auto py-5 md:py-20 min-h-[50vh]">
       <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
         All Toys
       </h1>
