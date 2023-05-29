@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logo from "../assets/brand.png";
 import { SlClose, SlMenu } from "react-icons/sl";
-import { TbTriangleFilled } from "react-icons/tb";
+import { FaShoppingCart } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import PrimaryButton from "./PrimaryButton";
 import { useAuth } from "../contexts/AuthContext";
@@ -68,6 +68,17 @@ export default function Navbar() {
               )
             );
           })}
+          {currentUser && (
+            <div className="relative">
+              <FaShoppingCart
+                onClick={() => navigate("/cart")}
+                className="text-3xl cursor-pointer"
+              />
+              <span className="absolute -right-3 -top-3 font-bold text-sm w-6 h-6 rounded-full flex items-center justify-center text-primary bg-secondary">
+                21
+              </span>
+            </div>
+          )}
           {currentUser && (
             <div className="group">
               <img
